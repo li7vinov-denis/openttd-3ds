@@ -3,11 +3,11 @@
 /** @file extmidi.cpp Playing music via an external player. */
 
 #ifndef __MORPHOS__
+#include <sys/types.h>
 #include "../stdafx.h"
 #include "../debug.h"
 #include "extmidi.h"
 #include <fcntl.h>
-#include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <signal.h>
