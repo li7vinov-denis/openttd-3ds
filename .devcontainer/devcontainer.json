@@ -10,5 +10,5 @@
 	"runArgs": [
         "--env-file", "${localWorkspaceFolder}/.devcontainer/.env"
     ],
-	"postCreateCommand": "./docker-pre-config.sh"
+	"postCreateCommand": ".devcontainer/post-init.sh && ./configure-3ds.sh && exit"
 }

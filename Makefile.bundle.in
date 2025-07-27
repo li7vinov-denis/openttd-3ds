@@ -130,6 +130,12 @@ bundle_exe: all
 	$(Q)cd $(ROOT_DIR)/os/win32/installer && makensis.exe //DVERSION_INCLUDE=version_$(PLATFORM).txt install.nsi
 	$(Q)mv $(ROOT_DIR)/os/win32/installer/*$(PLATFORM).exe "$(BUNDLES_DIR)/$(BUNDLE_NAME).exe"
 
+bundle_3ds:
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).3dsx'
+	$(shell mkdir -p "$(BUNDLES_DIR)/$(OS)/data")
+	$(shell 3dsxtool ./bin/openttd "$(BUNDLES_DIR)/$(OS)/$(BUNDLE_NAME).3dsx")
+	$(shell cp -r ./data/ "$(BUNDLES_DIR)/$(OS)" && cp openttd.cfg "$(BUNDLES_DIR)/$(OS)/openttd.cfg")
+
 ifdef OSXAPP
 install:
 	@echo '[INSTALL] Cannot install the OSX Application Bundle'
