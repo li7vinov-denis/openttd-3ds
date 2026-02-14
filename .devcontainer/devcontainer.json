@@ -7,8 +7,5 @@
 		"dockerfile": "Dockerfile",
 		"context": ".."
 	},
-	"runArgs": [
-        "--env-file", "${localWorkspaceFolder}/.devcontainer/.env"
-    ],
 	"postCreateCommand": ".devcontainer/post-init.sh && ./configure-3ds.sh && exit"
 }

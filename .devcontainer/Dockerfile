@@ -1,10 +1,12 @@
-FROM mcr.microsoft.com/devcontainers/base:bullseye
+FROM --platform=x86_64 mcr.microsoft.com/devcontainers/base:bullseye
 
-RUN wget https://apt.devkitpro.org/install-devkitpro-pacman && \
-    chmod +x ./install-devkitpro-pacman && \
-    truncate -s-1 ./install-devkitpro-pacman && echo -n " --assume-yes" >> ./install-devkitpro-pacman && \
-    sudo ./install-devkitpro-pacman && \
-    rm ./install-devkitpro-pacman
+USER root
+
+RUN apt-get install apt-transport-https \
+  && mkdir -p /usr/share/keyring/ \
+  && wget -U "dkp apt" -O /usr/share/keyring/devkitpro-pub.gpg https://apt.devkitpro.org/devkitpro-pub.gpg \
+  && echo "deb [signed-by=/usr/share/keyring/devkitpro-pub.gpg] https://apt.devkitpro.org stable main" > /etc/apt/sources.list.d/devkitpro.list \
+  && apt-get update;
 
 ENV DEVKITPRO=/opt/devkitpro
 ENV DEVKITARM=/opt/devkitpro/devkitARM

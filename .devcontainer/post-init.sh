@@ -1,5 +1,7 @@
 #/bin/sh
 
+sudo apt-get install devkitpro-pacman devkitarm-tools -y;
+
 sudo dkp-pacman -Sy --noconfirm \
     3ds-dev \
     3ds-sdl \
