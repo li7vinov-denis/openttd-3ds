@@ -1,7 +1,7 @@
 #/bin/sh
 
 #configure project for 3DS
-./configure /configure --os=N3DS \
+./configure --os=N3DS \
     --host $DEVKITARM/bin/arm-none-eabi \
     --enable-static \
     --prefix-dir=$DEVKITPRO \
